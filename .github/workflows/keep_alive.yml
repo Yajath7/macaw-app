@@ -1,0 +1,13 @@
+name: Keep Macaw App Awake
+
+on:
+  schedule:
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit Health Endpoint
+        run: curl -s -o /dev/null -w "%{http_code}" https://streamlit.app
