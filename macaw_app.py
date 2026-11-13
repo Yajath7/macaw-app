@@ -3,7 +3,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Macaw By Stories | Operations Center",
-    page_icon="🦜",
+    page_icon="logo.png",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -40,7 +40,11 @@ if 'authenticated' not in st.session_state:
     st.session_state.authenticated = False
 
 if not st.session_state.authenticated:
-    st.title("🔒 Macaw Ops — Security Gateway")
+    c_logo, c_title = st.columns([1, 6])
+    with c_logo:
+        st.image("logo.png", width=95)
+    with c_title:
+        st.title("Macaw Ops — Security Gateway")
     st.markdown("---")
     access_key = st.text_input("Enter Staff Access Key", type="password")
     if st.button("Unlock Dashboard", key="login_btn"):
@@ -51,7 +55,11 @@ if not st.session_state.authenticated:
             st.error("Invalid Access Key. Entry Denied.")
     st.stop()
 
-st.title("🦜 Macaw By Stories — Full Venue Control Room")
+col_logo, col_head = st.columns([1, 8])
+with col_logo:
+    st.image("logo.png", width=85)
+with col_head:
+    st.title("Macaw By Stories — Full Venue Control Room")
 st.markdown("---")
 
 if 'zones' not in st.session_state:
